@@ -1,0 +1,134 @@
+.add-book {
+  min-height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2128&auto=format&fit=crop') center/cover;
+  padding: 2rem 0;
+}
+
+.add-book h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.book-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.book-form label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.book-form .form-control {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 0.75rem;
+}
+
+.book-form .form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.book-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.book-form button[type="submit"] {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.book-list-section,
+.add-book-section {
+  height: 90vh;
+  padding: 15px;
+}
+
+.book-list-section .card,
+.add-book-section .card {
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+  height: calc(100% - 50px);
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table img {
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.table img:hover {
+  transform: scale(1.1);
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 0.5em 0.8em;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  border-color: #28a745;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.card-header {
+  padding: 1rem;
+}
+
+.card-header h4 {
+  font-weight: 500;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .book-list-section,
+  .add-book-section {
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  
+  .table-responsive {
+    height: 50vh;
+  }
+} 

@@ -1,0 +1,60 @@
+.about-us-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.project-description {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.description-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.description-content ul {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.description-content li {
+  margin-bottom: 0.5rem;
+}
+
+.owner-card {
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.owner-card:hover {
+  transform: translateY(-5px);
+}
+
+.owner-image {
+  height: 250px;
+  object-fit: cover;
+}
+
+.owner-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.owner-card .card-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.owner-card .card-text {
+  color: #6c757d;
+  font-size: 0.9rem;
+} 

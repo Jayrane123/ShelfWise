@@ -1,0 +1,40 @@
+.footer {
+  margin-top: auto;
+  background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+}
+
+.footer h5 {
+  color: #007bff;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.footer p {
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer ul li a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.footer hr {
+  margin: 1.5rem 0;
+  opacity: 0.2;
+}
+
+.footer .contact-info li {
+  color: #b0b0b0;
+  margin-bottom: 0.75rem;
+} 

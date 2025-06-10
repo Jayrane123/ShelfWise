@@ -1,0 +1,42 @@
+.create-admin {
+  min-height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2128&auto=format&fit=crop') center/cover;
+  padding: 2rem 0;
+}
+
+.create-admin h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.admin-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.admin-form label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.admin-form .form-control {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 0.75rem;
+}
+
+.admin-form .form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.admin-form button[type="submit"] {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+} 
