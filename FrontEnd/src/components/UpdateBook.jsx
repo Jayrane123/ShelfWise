@@ -64,6 +64,7 @@ const UpdateBook = () => {
   if (loading) {
     return (
       <div className="update-book-page">
+        <img src="/images/Library.avif" alt="Library Background" className="updatebook-bg" />
         <Container className="py-5">
           <div className="text-center">Loading...</div>
         </Container>
@@ -77,6 +78,7 @@ const UpdateBook = () => {
 
   return (
     <div className="update-book-page">
+      <img src="/images/Library.avif" alt="Library Background" className="updatebook-bg" />
       <Container className="py-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2>Update Book</h2>

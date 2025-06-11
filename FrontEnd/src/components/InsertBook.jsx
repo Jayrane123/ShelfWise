@@ -40,7 +40,8 @@ const InsertBook = () => {
   };
 
   return (
-    <div className="insert-book-page">
+    <div className="insertbook-page">
+      <img src="/images/Library.avif" alt="Library Background" className="insertbook-bg" />
       <Container className="py-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2>Add New Book</h2>

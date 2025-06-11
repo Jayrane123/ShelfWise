@@ -12,7 +12,7 @@ const AboutUs = () => {
     name: "Jay Rane",
     role: "Project Lead",
     image: "/images/jay.png",
-    description: "Responsible for overseeing the project’s development lifecycle and ensuring timely delivery of all key milestones."
+    description: "Responsible for overseeing the project's development lifecycle and ensuring timely delivery of all key milestones."
   },
   {
     name: "Pratiksha Shilimkar",
@@ -31,6 +31,7 @@ const AboutUs = () => {
 
   return (
     <div className="about-us-page">
+      <img src="/images/Library.avif" alt="Library Background" className="about-us-bg" />
       <Container className="py-5">
         {/* Project Description */}
         <Row className="mb-5">

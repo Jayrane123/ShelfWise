@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Container, Form, Row, Col, Button, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
@@ -67,68 +66,71 @@ const Login = () => {
   };
 
   return (
-    <Container className="mt-5">
-      <Row className="justify-content-center">
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <div className="text-center mb-4">
-                <h2>{role === "admin" ? "Admin Login" : "User Login"}</h2>
-                <div className="btn-group mb-4">
-                  <Button
-                    variant={role === "user" ? "primary" : "outline-primary"}
-                    onClick={() => handleRoleChange("user")}
-                  >
-                    User Login
-                  </Button>
-                  <Button
-                    variant={role === "admin" ? "primary" : "outline-primary"}
-                    onClick={() => handleRoleChange("admin")}
-                  >
-                    Admin Login
-                  </Button>
-                </div>
-              </div>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-                <div className="d-grid gap-2">
-                  <Button variant="primary" type="submit">
-                    Login
-                  </Button>
-                </div>
-                {role === "user" && (
-                  <div className="text-center mt-3">
-                    <p>
-                      Don't have an account?{" "}
-                      <a href="/signup">Register here</a>
-                    </p>
+    <div className="login-page">
+      <img src="/images/Library.avif" alt="Library Background" className="login-bg" />
+      <Container className="mt-5">
+        <Row className="justify-content-center">
+          <Col md={6}>
+            <Card>
+              <Card.Body>
+                <div className="text-center mb-4">
+                  <h2>{role === "admin" ? "Admin Login" : "User Login"}</h2>
+                  <div className="btn-group mb-4">
+                    <Button
+                      variant={role === "user" ? "primary" : "outline-primary"}
+                      onClick={() => handleRoleChange("user")}
+                    >
+                      User Login
+                    </Button>
+                    <Button
+                      variant={role === "admin" ? "primary" : "outline-primary"}
+                      onClick={() => handleRoleChange("admin")}
+                    >
+                      Admin Login
+                    </Button>
                   </div>
-                )}
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+                </div>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Form.Group>
+                  <div className="d-grid gap-2">
+                    <Button variant="primary" type="submit">
+                      Login
+                    </Button>
+                  </div>
+                  {role === "user" && (
+                    <div className="text-center mt-3">
+                      <p>
+                        Don't have an account?{" "}
+                        <a href="/signup">Register here</a>
+                      </p>
+                    </div>
+                  )}
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

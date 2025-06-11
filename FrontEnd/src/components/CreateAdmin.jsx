@@ -55,100 +55,103 @@ const CreateAdmin = () => {
   };
 
   return (
-    <Container className="py-5">
-      <Row className="justify-content-center">
-        <Col md={8} lg={6}>
-          <Card className="signup-card">
-            <Card.Body>
-              <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2 className="text-center">Create Admin</h2>
-                <Button variant="secondary" onClick={() => navigate('/admin/dashboard')}>
-                  Back
-                </Button>
-              </div>
+    <div className="createadmin-page">
+      <img src="/images/Library.avif" alt="Library Background" className="createadmin-bg" />
+      <Container className="py-5">
+        <Row className="justify-content-center">
+          <Col md={8} lg={6}>
+            <Card className="signup-card">
+              <Card.Body>
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                  <h2 className="text-center">Create Admin</h2>
+                  <Button variant="secondary" onClick={() => navigate('/admin/dashboard')}>
+                    Back
+                  </Button>
+                </div>
 
-              <Formik
-                initialValues={{ name: '', email: '', password: '' }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-              >
-                {({
-                  values,
-                  errors,
-                  touched,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                  isSubmitting
-                }) => (
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Full Name</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="name"
-                        value={values.name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.name && errors.name}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.name}
-                      </Form.Control.Feedback>
-                    </Form.Group>
+                <Formik
+                  initialValues={{ name: '', email: '', password: '' }}
+                  validationSchema={validationSchema}
+                  onSubmit={handleSubmit}
+                >
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting
+                  }) => (
+                    <Form onSubmit={handleSubmit}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Full Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="name"
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.name && errors.name}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.name}
+                        </Form.Control.Feedback>
+                      </Form.Group>
 
-                    <Form.Group className="mb-3">
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control
-                        type="email"
-                        name="email"
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.email && errors.email}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.email}
-                      </Form.Control.Feedback>
-                    </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                          type="email"
+                          name="email"
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.email && errors.email}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.email}
+                        </Form.Control.Feedback>
+                      </Form.Group>
 
-                    <Form.Group className="mb-3">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        name="password"
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.password && errors.password}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.password}
-                      </Form.Control.Feedback>
-                    </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          name="password"
+                          value={values.password}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.password && errors.password}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.password}
+                        </Form.Control.Feedback>
+                      </Form.Group>
 
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      className="w-100"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Creating Admin...' : 'Create Admin'}
-                    </Button>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="w-100"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Creating Admin...' : 'Create Admin'}
+                      </Button>
 
-                    {error && (
-                      <Alert variant="danger" className="mt-3 text-center">
-                        {error}
-                      </Alert>
-                    )}
-                  </Form>
-                )}
-              </Formik>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+                      {error && (
+                        <Alert variant="danger" className="mt-3 text-center">
+                          {error}
+                        </Alert>
+                      )}
+                    </Form>
+                  )}
+                </Formik>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

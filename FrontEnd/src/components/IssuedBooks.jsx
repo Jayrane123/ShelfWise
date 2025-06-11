@@ -37,6 +37,7 @@ const IssuedBooks = () => {
             <tr>
               <th>Book Name</th>
               <th>Author</th>
+              <th>Issue Date</th>
               <th>Due In (Days)</th>
             </tr>
           </thead>
@@ -45,6 +46,7 @@ const IssuedBooks = () => {
               <tr key={book.id}>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
+                <td>{book.issueDate}</td>
                 <td>{book.dueDate || 'N/A'}</td>
               </tr>
             ))}
