@@ -26,6 +26,6 @@ public class BookIdDTO {
     private String author;
 
     private boolean available;
-    
+    private LocalDate issueDate;
     private int dueDate;
 }
