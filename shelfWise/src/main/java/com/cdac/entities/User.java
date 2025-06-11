@@ -9,9 +9,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
-
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +37,10 @@ public class User extends BaseEntity implements UserDetails{
 
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private String address;
+    @Column(nullable = false)
+    private Long mobile;
     @Enumerated(EnumType.STRING)
    	@Column(name = "user_role")
    	private UserRole role;

@@ -32,6 +32,10 @@ public class Admin extends BaseEntity implements UserDetails{
 
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private String address;
+    @Column(nullable = false)
+    private Long mobile;
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role")
    	private UserRole role;

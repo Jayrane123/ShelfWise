@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Container, Form, Row, Col, Button, Card } from 'react-bootstrap';
-import { toast } from 'react-toastify';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { storeToken } from '../services/LocalStorage';
-import { SignInUser } from '../services/UsersService';
-import { SignInAdmin } from '../services/AdminService';
-import './Login.css';
+import React, { useState } from "react";
+import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { useNavigate, useLocation } from "react-router-dom";
+import { storeToken } from "../services/LocalStorage";
+import { SignInUser } from "../services/UsersService";
+import { SignInAdmin } from "../services/AdminService";
+import "./Login.css";
 
 const Login = () => {
   const location = useLocation();
@@ -20,10 +20,11 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRoleChange = (newRole) => {
-    setRole(newRole);
-    setFormData({ email: "", password: "" });
-  };
+ const handleRoleChange = (newRole) => {
+  setRole(newRole);
+  setFormData({ email: "", password: "" });
+  console.log("Role switched to:", newRole);
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,21 +42,21 @@ const Login = () => {
 
       if (response.data && response.data.jwt) {
         if (role === "admin") {
-  localStorage.setItem("adminName", response.data.name || "Admin");
-} else {
-  localStorage.setItem("userEmail", response.data.email); // ✅ add this line
-}
+          localStorage.setItem("adminName", response.data.name || "Admin");
+        } else {
+          localStorage.setItem("userEmail", response.data.email); // ✅ add this line
+        }
 
         storeToken(response.data.jwt);
-
-        // ✅ Update for role handling
         if (role === "admin") {
           localStorage.setItem("adminName", response.data.name || "Admin");
         } else {
           localStorage.removeItem("adminName");
         }
 
-        toast.success(`${role === "admin" ? "Admin" : "User"} login successful!`);
+        toast.success(
+          `${role === "admin" ? "Admin" : "User"} login successful!`
+        );
         navigate(role === "admin" ? "/admin/dashboard" : "/user/dashboard");
       } else {
         toast.error("Incorrect email or password");
@@ -67,7 +68,11 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <img src="/images/Library.avif" alt="Library Background" className="login-bg" />
+      <img
+        src="/images/Library.avif"
+        alt="Library Background"
+        className="login-bg"
+      />
       <Container className="mt-5">
         <Row className="justify-content-center">
           <Col md={6}>
@@ -116,12 +121,19 @@ const Login = () => {
                       Login
                     </Button>
                   </div>
+
                   {role === "user" && (
                     <div className="text-center mt-3">
                       <p>
                         Don't have an account?{" "}
                         <a href="/signup">Register here</a>
                       </p>
+                    </div>
+                  )}
+
+                  {role === "admin" && (
+                    <div className="text-muted small mt-2 text-center">
+                      New admin accounts can only be created by existing admins
                     </div>
                   )}
                 </Form>
@@ -260,4 +272,4 @@ export default Login;
 //   );
 // };
 
-// export default Login; 
+// export default Login;

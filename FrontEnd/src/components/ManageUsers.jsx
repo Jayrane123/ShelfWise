@@ -159,17 +159,17 @@
 // };
 
 // export default ManageUsers;
-import React, { useState, useEffect } from 'react';
-import { Container, Form, Button, Table, Modal } from 'react-bootstrap';
-import { getAllUsers } from '../services/UsersService';
-import { toast } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import { Container, Form, Button, Table, Modal } from "react-bootstrap";
+import { getAllUsers } from "../services/UsersService";
+import { toast } from "react-toastify";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     id: 0,
-    name: '',
-    email: ''
+    name: "",
+    email: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -196,7 +196,7 @@ const ManageUsers = () => {
         toast.error("Invalid user data format received");
       }
     } catch (error) {
-      toast.error('Failed to fetch users');
+      toast.error("Failed to fetch users");
       console.error(error);
       setUsers([]); // Fallback to empty list on error
     }
@@ -204,9 +204,9 @@ const ManageUsers = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -218,22 +218,22 @@ const ManageUsers = () => {
     }
 
     if (isEditing) {
-      setUsers(prev =>
-        prev.map(user => (user.id === formData.id ? formData : user))
+      setUsers((prev) =>
+        prev.map((user) => (user.id === formData.id ? formData : user))
       );
     } else {
       const newUser = {
         ...formData,
-        id: Math.max(...users.map(u => u.id), 0) + 1
+        id: Math.max(...users.map((u) => u.id), 0) + 1,
       };
-      setUsers(prev => [...prev, newUser]);
+      setUsers((prev) => [...prev, newUser]);
     }
 
     handleClose();
   };
 
   const handleDelete = () => {
-    setUsers(prev => prev.filter(user => user.id !== formData.id));
+    setUsers((prev) => prev.filter((user) => user.id !== formData.id));
     handleClose();
   };
 
@@ -241,8 +241,10 @@ const ManageUsers = () => {
     setShowModal(false);
     setFormData({
       id: 0,
-      name: '',
-      email: ''
+      name: "",
+      email: "",
+      mobile: "",
+      address: "",
     });
     setIsEditing(false);
   };
@@ -264,7 +266,7 @@ const ManageUsers = () => {
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{isEditing ? 'Edit User' : 'Add New User'}</Modal.Title>
+          <Modal.Title>{isEditing ? "Edit User" : "Add New User"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -300,7 +302,7 @@ const ManageUsers = () => {
             </Button>
           )}
           <Button variant="primary" onClick={handleSubmit}>
-            {isEditing ? 'Update' : 'Add'} User
+            {isEditing ? "Update" : "Add"} User
           </Button>
         </Modal.Footer>
       </Modal>
@@ -311,19 +313,23 @@ const ManageUsers = () => {
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
           </tr>
         </thead>
         <tbody>
           {Array.isArray(users) && users.length > 0 ? (
-            users.map(user => (
+            users.map((user) => (
               <tr
                 key={user.id}
                 onClick={() => handleSelectUser(user)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
               >
                 <td>{user.id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.mobile}</td>
+                <td>{user.address}</td>
               </tr>
             ))
           ) : (

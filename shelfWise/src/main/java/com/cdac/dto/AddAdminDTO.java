@@ -16,5 +16,7 @@ public class AddAdminDTO {
     private String email;
     private UserRole role; 
 
-    private String password;  
+    private String password;
+    private Long mobile;
+    private String address;
 }

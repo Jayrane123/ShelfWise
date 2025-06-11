@@ -7,13 +7,15 @@
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Navigation bar brand */
 .navbar-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.7rem !important;
+  font-weight: 700;
+  color: #00BFFF !important;
+  text-shadow: 1px 1px 2px #000;
 }
 
 /* Footer styling */
@@ -33,7 +35,7 @@ footer {
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Book cover image */
@@ -97,4 +99,39 @@ body {
 
 .bg-danger {
   background-color: #dc3545 !important;
-} 
+}
+
+/* Enhanced Navigation Styling */
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover underline effect on navbar links */
+.nav-link.nav-hover {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link.nav-hover::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #00BFFF;
+  transition: width 0.3s ease;
+}
+
+.nav-link.nav-hover:hover {
+  color: #00BFFF !important;
+}
+
+.nav-link.nav-hover:hover::after {
+  width: 100%;
+}

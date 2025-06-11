@@ -12,20 +12,6 @@ import com.cdac.dao.Userdao;
 
 import lombok.AllArgsConstructor;
 
-//@Service
-//@Transactional
-//@AllArgsConstructor
-//public class CustomUserDetailsServiceImpl implements UserDetailsService {
-//	private final Userdao userDao;
-//	@Override
-//	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//		User user=userDao.findByEmail(email)
-//				.orElseThrow(() -> 
-//				new UsernameNotFoundException("Invalid email ....."));
-//		//=> partial auth - email exists
-//		return user;
-//	}
-//}
 
 
 

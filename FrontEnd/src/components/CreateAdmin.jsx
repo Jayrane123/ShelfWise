@@ -15,8 +15,10 @@ const CreateAdmin = () => {
   const nameRegex = /^[a-zA-Z\s]{2,50}$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  const mobileRegex = /^[6-9]\d{9}$/;
+  const addressRegex = /^.{10,100}$/;
 
-  // Validation schema
+  // ✅ Validation schema with mobile and address
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .matches(nameRegex, 'Name must be 2-50 characters long and contain only letters and spaces')
@@ -27,6 +29,12 @@ const CreateAdmin = () => {
     password: Yup.string()
       .matches(passwordRegex, 'Password must be at least 8 characters, contain a letter, number, and special character')
       .required('Password is required'),
+    mobile: Yup.string()
+      .matches(mobileRegex, 'Mobile number must be a valid 10-digit Indian number')
+      .required('Mobile number is required'),
+    address: Yup.string()
+      .matches(addressRegex, 'Address must be at least 10 characters long')
+      .required('Address is required'),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -70,7 +78,13 @@ const CreateAdmin = () => {
                 </div>
 
                 <Formik
-                  initialValues={{ name: '', email: '', password: '' }}
+                  initialValues={{
+                    name: '',
+                    email: '',
+                    password: '',
+                    mobile: '',
+                    address: ''
+                  }}
                   validationSchema={validationSchema}
                   onSubmit={handleSubmit}
                 >
@@ -126,6 +140,39 @@ const CreateAdmin = () => {
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.password}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+
+                      {/* ✅ Mobile Field */}
+                      <Form.Group className="mb-3">
+                        <Form.Label>Mobile Number</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="mobile"
+                          value={values.mobile}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.mobile && errors.mobile}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.mobile}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+
+                      {/* ✅ Address Field */}
+                      <Form.Group className="mb-3">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          name="address"
+                          value={values.address}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.address && errors.address}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.address}
                         </Form.Control.Feedback>
                       </Form.Group>
 

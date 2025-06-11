@@ -10,14 +10,16 @@ import './SignUp.css';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState(''); // ✅ State for error message
+  const [error, setError] = useState('');
 
-  // Regex patterns for validation
+  // Regex patterns
   const nameRegex = /^[a-zA-Z\s]{2,50}$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  const mobileRegex = /^[6-9]\d{9}$/;
+  const addressRegex = /^.{10,100}$/; // At least 10 characters
 
-  // Yup validation schema
+  // ✅ Validation schema with mobile and address
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .matches(nameRegex, 'Name must be 2-50 characters long and contain only letters and spaces')
@@ -26,11 +28,14 @@ const SignUp = () => {
       .matches(emailRegex, 'Invalid email address')
       .required('Email is required'),
     password: Yup.string()
-      .matches(
-        passwordRegex,
-        'Password must be at least 8 characters long and contain at least one letter, one number, and one special character'
-      )
+      .matches(passwordRegex, 'Password must be at least 8 characters long and contain at least one letter, one number, and one special character')
       .required('Password is required'),
+    mobile: Yup.string()
+      .matches(mobileRegex, 'Mobile number must be a valid 10-digit Indian number')
+      .required('Mobile number is required'),
+    address: Yup.string()
+      .matches(addressRegex, 'Address must be at least 10 characters long')
+      .required('Address is required'),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -72,7 +77,9 @@ const SignUp = () => {
                   initialValues={{
                     name: '',
                     email: '',
-                    password: ''
+                    password: '',
+                    mobile: '',
+                    address: ''
                   }}
                   validationSchema={validationSchema}
                   onSubmit={handleSubmit}
@@ -97,9 +104,7 @@ const SignUp = () => {
                           onBlur={handleBlur}
                           isInvalid={touched.name && errors.name}
                         />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.name}
-                        </Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
                       </Form.Group>
 
                       <Form.Group className="mb-3">
@@ -112,9 +117,7 @@ const SignUp = () => {
                           onBlur={handleBlur}
                           isInvalid={touched.email && errors.email}
                         />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.email}
-                        </Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                       </Form.Group>
 
                       <Form.Group className="mb-3">
@@ -127,21 +130,42 @@ const SignUp = () => {
                           onBlur={handleBlur}
                           isInvalid={touched.password && errors.password}
                         />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.password}
-                        </Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                       </Form.Group>
 
-                      <Button 
-                        variant="primary" 
-                        type="submit" 
-                        className="w-100"
-                        disabled={isSubmitting}
-                      >
+                      {/* ✅ Mobile number field */}
+                      <Form.Group className="mb-3">
+                        <Form.Label>Mobile Number</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="mobile"
+                          value={values.mobile}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.mobile && errors.mobile}
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.mobile}</Form.Control.Feedback>
+                      </Form.Group>
+
+                      {/* ✅ Address field */}
+                      <Form.Group className="mb-3">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          name="address"
+                          value={values.address}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.address && errors.address}
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
+                      </Form.Group>
+
+                      <Button variant="primary" type="submit" className="w-100" disabled={isSubmitting}>
                         {isSubmitting ? 'Signing Up...' : 'Sign Up as User'}
                       </Button>
 
-                      {/* Show error if present */}
                       {error && (
                         <Alert variant="danger" className="mt-3 text-center">
                           {error}

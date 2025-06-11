@@ -19,8 +19,6 @@ import lombok.AllArgsConstructor;
 @Component //to declare it as a spring bean
 @AllArgsConstructor
 public class JWTCustomFilter extends OncePerRequestFilter{
-	//verify JWT
-	//depcy - JwtUtils
 	private final JwtUtils jwtUtils;
 
 	@Override

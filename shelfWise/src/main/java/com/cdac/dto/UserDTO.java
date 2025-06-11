@@ -20,6 +20,8 @@ public class UserDTO extends BaseDTO{
     private String email;
 
     private String password;
+    private Long mobile;
+    private String address;
     private UserRole role; 
     private List<Book> borrowedBooks;
 }

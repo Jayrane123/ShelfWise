@@ -2,12 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  GeoAlt,
-  Telephone,
-  Envelope,
-  Clock
-} from 'react-bootstrap-icons';
+import { GeoAlt, Telephone, Envelope, Clock } from 'react-bootstrap-icons';
 import './ContactUs.css';
 
 const ContactUs = () => {
@@ -41,17 +36,18 @@ const ContactUs = () => {
 
   return (
     <div className="contact-us-page">
-      <img src="/images/Library.avif" alt="Library Background" className="contact-us-bg" />
+      <div className="contact-us-bg"></div>
+
       <Container className="py-5">
-        <h1 className="text-center mb-5">Contact Us</h1>
-        <p className="text-center text-muted mb-5">
+        <h1 className="text-center mb-4 text-white">Contact Us</h1>
+        <p className="text-center text-light mb-5">
           We'd love to hear from you. Please fill out the form and we'll be in touch shortly.
         </p>
 
         <Row className="g-4">
           {/* Contact Info */}
           <Col md={4}>
-            <Card className="contact-info-card h-100 p-3">
+            <Card className="contact-info-card h-100 p-3 shadow">
               <Card.Body>
                 <h4 className="mb-4 text-primary fw-semibold">Get in Touch</h4>
 
@@ -92,7 +88,7 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <Col md={8}>
-            <Card className="contact-form-card p-4">
+            <Card className="contact-form-card p-4 shadow">
               <Card.Body>
                 <h4 className="mb-4 text-primary fw-semibold">Send us a Message</h4>
 
