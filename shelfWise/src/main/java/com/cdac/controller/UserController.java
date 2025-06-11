@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
     private UserService userService;	
 	@GetMapping("/getall")
-    public ResponseEntity<List<UserIdDTO>> getAllBooks() {
+    public ResponseEntity<List<UserIdDTO>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 }
